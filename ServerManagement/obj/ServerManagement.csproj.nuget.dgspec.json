@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/tomdev/Projects/blazor/BlazorKata/ServerManagement/ServerManagement.csproj": {}
+  },
+  "projects": {
+    "/Users/tomdev/Projects/blazor/BlazorKata/ServerManagement/ServerManagement.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/tomdev/Projects/blazor/BlazorKata/ServerManagement/ServerManagement.csproj",
+        "projectName": "ServerManagement",
+        "projectPath": "/Users/tomdev/Projects/blazor/BlazorKata/ServerManagement/ServerManagement.csproj",
+        "packagesPath": "/Users/tomdev/.nuget/packages/",
+        "outputPath": "/Users/tomdev/Projects/blazor/BlazorKata/ServerManagement/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/tomdev/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
