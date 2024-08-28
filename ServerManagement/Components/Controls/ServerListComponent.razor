@@ -34,6 +34,8 @@
 
     private List<Server>? servers;
 
+    private System.Threading.Timer? Timer;
+
     protected override void OnParametersSet()
     {
         if (string.IsNullOrEmpty(this.ServerFilter))
@@ -44,5 +46,31 @@
         {
             this.servers = ServersRepository.SearchServers(this.ServerFilter);
         }
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        @* if (firstRender)
+        {
+            if (string.IsNullOrEmpty(this.ServerFilter))
+            {
+                this.servers = ServersRepository.GetServersByCity(CityName ?? "Toronto");
+            }
+            else
+            {
+                this.servers = ServersRepository.SearchServers(this.ServerFilter);
+            }
+            StateHasChanged();
+
+            Timer = new System.Threading.Timer(_ => 
+                {
+                    this.InvokeAsync(() =>
+                        { 
+                            StateHasChanged();
+                        });
+                }, null, 2000, 2000);
+        } *@
     }
 }

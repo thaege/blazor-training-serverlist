@@ -1,4 +1,5 @@
 ﻿@page "/servers"
+@page "/servers/back_from/{cityName}"
 
 @rendermode InteractiveServer
 
@@ -8,11 +9,17 @@
 <br/>
 <br/>
 
-<CityListComponent @ref="cityListComponent" SelectedCityCallback="HandleCitySelection"></CityListComponent>
+<CityListComponent
+    @ref="cityListComponent"
+    SelectedCityCallback="HandleCitySelection"
+    selectedCity="@this.selectedCity"></CityListComponent>
 
 <br/>
 
-<SearchServersComponent @ref="searchServersComponent" SearchServersCallback="HandleSearchServer"></SearchServersComponent>
+<SearchServersComponent 
+    @ref="searchServersComponent"
+    SearchServersCallback="HandleSearchServer"
+    style="width: 1000px;"></SearchServersComponent>
 
 <br/>
 
@@ -25,7 +32,7 @@
 <br/>
 <br/>
 
-<a href="/servers/addServer" class="btn btn-link">
+<a href="/server" class="btn btn-link">
     <div class="card-body">
         <button type="button" class="btn btn-primary">Add Server</button>
     </div>
@@ -33,10 +40,14 @@
 
 
 @code {
-    private CityListComponent? cityListComponent;
-    private SearchServersComponent? searchServersComponent;
+    [Parameter]
+    public string? CityName { get; set; }
+
     private string selectedCity = "Toronto";
     private string serverFilter = "";
+        
+    private CityListComponent? cityListComponent;
+    private SearchServersComponent? searchServersComponent;
 
     private void HandleCitySelection(string cityName)
     {
@@ -49,5 +60,19 @@
     {
         this.serverFilter = serverFilter;
         this.cityListComponent?.ClearSelection();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (NavigationManager.Uri.Contains("back_from")
+                && !string.IsNullOrWhiteSpace(CityName))
+            {
+                selectedCity = CityName;
+
+                StateHasChanged();
+            }
+        }
     }
 }
