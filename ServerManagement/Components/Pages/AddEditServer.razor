@@ -65,6 +65,9 @@ else
     [Parameter]
     public int? Id { get; set; }
 
+    [SupplyParameterFromQuery]
+    public string? City { get; set; }
+
     [SupplyParameterFromForm]
     private Server? server { get; set; }
 
