@@ -52,7 +52,7 @@
     {
         base.OnAfterRender(firstRender);
 
-        @* if (firstRender)
+        if (firstRender)
         {
             if (string.IsNullOrEmpty(this.ServerFilter))
             {
@@ -64,13 +64,13 @@
             }
             StateHasChanged();
 
-            Timer = new System.Threading.Timer(_ => 
+            @* Timer = new System.Threading.Timer(_ => 
                 {
                     this.InvokeAsync(() =>
                         { 
                             StateHasChanged();
                         });
-                }, null, 2000, 2000);
-        } *@
+                }, null, 2000, 2000); *@
+        }
     }
 }

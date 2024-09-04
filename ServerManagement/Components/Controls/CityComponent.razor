@@ -1,13 +1,23 @@
-﻿<div class="col">
+﻿@inject TorontoOnlineServersStore TorontoOnlineServersStore
+
+<div class="col">
     <div class="card @(selectedCity.Equals(city, StringComparison.InvariantCultureIgnoreCase) ? "border-primary" : "")">
-    <img src="@($"/images/{city}.png")" class="card-img-top" alt="...">
-    <div class="card-body">
-        <button type="button" class="btn btn-primary" @onclick="@(() => { SelectCity(city); })">@city</button>
-    </div>
+        <img src="@($"/images/{city}.png")" class="card-img-top" alt="...">
+        <div class="card-body">
+            <button type="button" class="btn btn-primary" @onclick="@(() => { SelectCity(city); })">@city</button>
+        </div>
+        <div>
+            @if (city.Equals("Toronto", StringComparison.CurrentCultureIgnoreCase))
+            {
+                <text>@numberOfServersOnlineToronto</text>
+            }
+        </div>
     </div>
 </div>
 
 @code {
+    private int numberOfServersOnlineToronto;
+
     [Parameter]
     public string selectedCity { get; set; } = "Toronto";
 
@@ -21,4 +31,21 @@
     {
         SelectedCityCallback.InvokeAsync(cityName);
     }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            numberOfServersOnlineToronto = TorontoOnlineServersStore.GetNumServersOnline();
+            TorontoOnlineServersStore.AddStateChangeListener(OnServersStatusChanged);
+            StateHasChanged();
+        }
+    }
+
+    private void OnServersStatusChanged()
+    {
+        numberOfServersOnlineToronto = TorontoOnlineServersStore.GetNumServersOnline();
+        StateHasChanged();
+    }
+
 }
