@@ -6,7 +6,7 @@
 @inherits ComponentBase
 
 @inject NavigationManager NavigationManager
-@inject SessionStorage sessionStorage
+@inject ContainerStorage containerStorage
 
 <h3>City Name</h3>
 <br/>
@@ -38,16 +38,16 @@
         base.OnInitialized();
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
-            this.server = await sessionStorage.GetServerAsync();
+            this.server = containerStorage.GetServer();
             StateHasChanged();
         }
     }
 
-    private async Task GoNext()
+    private void GoNext()
     {
         if (server is not null)
         {
@@ -57,9 +57,10 @@
             }
             else
             {
-                await sessionStorage.SetServerAsync(server);
+                containerStorage.SetServer(server);
                 NavigationManager.NavigateTo("/serverstatus");
             }
         }
     }
 }
+    using System.ComponentModel;
