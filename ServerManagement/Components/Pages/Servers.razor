@@ -5,6 +5,7 @@
 
 @inject NavigationManager NavigationManager
 @inject TorontoOnlineServersStore TorontoOnlineServersStore
+@inject IServersEFCoreRepository ServersEFCoreRepository
 
 <h3>Servers</h3>
 <br/>
@@ -75,7 +76,7 @@
                 StateHasChanged();
             }
 
-            var serversToronto = ServersRepository.GetServersByCity("Toronto");
+            var serversToronto = ServersEFCoreRepository.GetServersByCity("Toronto");
             if (serversToronto is not null)
             {
                 TorontoOnlineServersStore.SetNumbersServersOnline(serversToronto.Count(x => x.IsOnline));

@@ -1,4 +1,6 @@
-﻿<table class="table table-striped">
+﻿@inject IServersEFCoreRepository ServersEFCoreRepository
+
+<table class="table table-striped">
     <Repeater Items="this.servers">
         <Header>
             <th>
@@ -40,11 +42,11 @@
     {
         if (string.IsNullOrEmpty(this.ServerFilter))
         {
-            this.servers = ServersRepository.GetServersByCity(CityName ?? "Toronto");
+            this.servers = ServersEFCoreRepository.GetServersByCity(CityName ?? "Toronto");
         }
         else
         {
-            this.servers = ServersRepository.SearchServers(this.ServerFilter);
+            this.servers = ServersEFCoreRepository.SearchServers(this.ServerFilter);
         }
     }
 
@@ -56,11 +58,11 @@
         {
             if (string.IsNullOrEmpty(this.ServerFilter))
             {
-                this.servers = ServersRepository.GetServersByCity(CityName ?? "Toronto");
+                this.servers = ServersEFCoreRepository.GetServersByCity(CityName ?? "Toronto");
             }
             else
             {
-                this.servers = ServersRepository.SearchServers(this.ServerFilter);
+                this.servers = ServersEFCoreRepository.SearchServers(this.ServerFilter);
             }
             StateHasChanged();
 

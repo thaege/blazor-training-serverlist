@@ -1,4 +1,8 @@
-﻿@inject TorontoOnlineServersStore TorontoOnlineServersStore
+﻿
+@implements IDisposable
+
+@inject TorontoOnlineServersStore TorontoOnlineServersStore
+
 
 <div class="col">
     <div class="card @(selectedCity.Equals(city, StringComparison.InvariantCultureIgnoreCase) ? "border-primary" : "")">
@@ -42,10 +46,14 @@
         }
     }
 
+    public void Dispose()
+    {
+        TorontoOnlineServersStore.RemoveStateChangeListener(OnServersStatusChanged);
+    }
+
     private void OnServersStatusChanged()
     {
         numberOfServersOnlineToronto = TorontoOnlineServersStore.GetNumServersOnline();
         StateHasChanged();
     }
-
 }
