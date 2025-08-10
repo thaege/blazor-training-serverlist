@@ -7,7 +7,7 @@
 namespace ServerManagement.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,13 +34,13 @@ namespace ServerManagement.Migrations
                 {
                     { 1, "Toronto", true, "Server1" },
                     { 2, "Toronto", false, "Server2" },
-                    { 3, "Toronto", true, "Server3" },
+                    { 3, "Toronto", false, "Server3" },
                     { 4, "Toronto", true, "Server4" },
-                    { 5, "Montreal", false, "Server5" },
-                    { 6, "Montreal", true, "Server6" },
+                    { 5, "Montreal", true, "Server5" },
+                    { 6, "Montreal", false, "Server6" },
                     { 7, "Montreal", true, "Server7" },
-                    { 8, "Ottawa", false, "Server8" },
-                    { 9, "Ottawa", true, "Server9" },
+                    { 8, "Ottawa", true, "Server8" },
+                    { 9, "Ottawa", false, "Server9" },
                     { 10, "Calgary", true, "Server10" },
                     { 11, "Calgary", false, "Server11" },
                     { 12, "Halifax", false, "Server12" },

@@ -63,7 +63,7 @@ namespace ServerManagement.Migrations
                         {
                             ServerId = 3,
                             City = "Toronto",
-                            IsOnline = true,
+                            IsOnline = false,
                             Name = "Server3"
                         },
                         new
@@ -77,14 +77,14 @@ namespace ServerManagement.Migrations
                         {
                             ServerId = 5,
                             City = "Montreal",
-                            IsOnline = false,
+                            IsOnline = true,
                             Name = "Server5"
                         },
                         new
                         {
                             ServerId = 6,
                             City = "Montreal",
-                            IsOnline = true,
+                            IsOnline = false,
                             Name = "Server6"
                         },
                         new
@@ -98,14 +98,14 @@ namespace ServerManagement.Migrations
                         {
                             ServerId = 8,
                             City = "Ottawa",
-                            IsOnline = false,
+                            IsOnline = true,
                             Name = "Server8"
                         },
                         new
                         {
                             ServerId = 9,
                             City = "Ottawa",
-                            IsOnline = true,
+                            IsOnline = false,
                             Name = "Server9"
                         },
                         new
